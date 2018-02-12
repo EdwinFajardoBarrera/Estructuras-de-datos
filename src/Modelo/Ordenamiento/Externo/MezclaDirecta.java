@@ -194,10 +194,10 @@ public class MezclaDirecta {
 
     }
 
-    public List<RegistroEmpleados> ordenarEmpleados(ArrayList<RegistroEmpleados> nomina) throws IOException{
+    public ArrayList<RegistroEmpleados> ordenarEmplFeados(ArrayList<RegistroEmpleados> nomina) throws IOException{
         ArchivoTxt archivo = new ArchivoTxt();
         
-        List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
+        ArrayList<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         
         int[] arreglo = new int[nomina.size()];
         int i = 0;

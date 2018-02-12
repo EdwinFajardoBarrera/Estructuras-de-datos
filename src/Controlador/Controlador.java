@@ -15,6 +15,7 @@ import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -55,6 +56,7 @@ public final class Controlador implements ActionListener{
         this.shellsort = shellsort;
         this.mezclaDirecta = mezclaDirecta;
         this.mezclaEquilibradaMultiple = mezclaEquilibradaMultiple;
+        
         
         //Botones, solo se agrega el listener para saber si se presiona  o no
         this.vMain.JBSalir.addActionListener(this);
@@ -120,50 +122,69 @@ public final class Controlador implements ActionListener{
         
         if(vMain.getJBGenerarRep() == e.getSource()){ //Valida si el boton "Generar reporte" se presiona
             System.out.println("Presionaste generar reporte ");
-            ExportarArchivoCSV exportar = new ExportarArchivoCSV();
             
              switch(s){
             
             case "Insercion":
                 System.out.println("Insercion");
-                insercion.ordenarEmpleados(regEmpleados.listaEmpleados);
-                exportar.generarArchivo(regEmpleados.listaEmpleados);                
+                ExportarArchivoCSV exportar = new ExportarArchivoCSV();
+                ArrayList<RegistroEmpleados> insercionado = new ArrayList<RegistroEmpleados>();
+                
+                insercionado = insercion.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar.generarArchivo(insercionado);                
                 break;
                 
             case "Burbuja":
                 System.out.println("Burbuja");
-                burbuja.ordenarEmpleados(regEmpleados.listaEmpleados);
-                exportar.generarArchivo(regEmpleados.listaEmpleados);
+                ExportarArchivoCSV exportar2 = new ExportarArchivoCSV();
+                ArrayList<RegistroEmpleados> burbujeado = new ArrayList<RegistroEmpleados>();
+                
+                burbujeado = burbuja.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar2.generarArchivo(burbujeado);
                 break;
                 
             case "Mergesort":
                 System.out.println("Mergesort");
-                mergesort.ordenarEmpleados(regEmpleados.listaEmpleados);
-                exportar.generarArchivo(regEmpleados.listaEmpleados);
+                ExportarArchivoCSV exportar3 = new ExportarArchivoCSV();
+                ArrayList<RegistroEmpleados> mergesorteado = new ArrayList<RegistroEmpleados>();
+                
+                mergesorteado = mergesort.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar3.generarArchivo(mergesorteado);
                 break;
                 
-            case "Quicksort":
+            case "Quicksort":                
                 System.out.println("Quicksort");
-                quicksort.ordenarEmpleados(regEmpleados.listaEmpleados);
-                exportar.generarArchivo(regEmpleados.listaEmpleados);
+                ExportarArchivoCSV exportar4 = new ExportarArchivoCSV();
+                ArrayList<RegistroEmpleados> quicksorteado = new ArrayList<RegistroEmpleados>();
+                
+                quicksorteado = quicksort.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar4.generarArchivo(quicksorteado);
                 break;
                 
-            case "Shellsort":
+            case "Shellsort":                
                 System.out.println("Shellsort");
-                shellsort.ordenarEmpleados(regEmpleados.listaEmpleados);
-                exportar.generarArchivo(regEmpleados.listaEmpleados);
+                ExportarArchivoCSV exportar5 = new ExportarArchivoCSV();
+                ArrayList<RegistroEmpleados> shellsorteado = new ArrayList<RegistroEmpleados>();
+                
+                shellsorteado = shellsort.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar5.generarArchivo(regEmpleados.listaEmpleados);
                 break;
                 
             case "Mezcla directa":
                 System.out.println("Mezcla directa");
+                ExportarArchivoCSV exportar6 = new ExportarArchivoCSV();
+                ArrayList<RegistroEmpleados> mezcladoDirectamente = new ArrayList<RegistroEmpleados>();
+                
             {
                 try {
-                    mezclaDirecta.ordenarEmpleados(regEmpleados.listaEmpleados);
-                    exportar.generarArchivo(regEmpleados.listaEmpleados);
+                    mezcladoDirectamente = mezclaDirecta.ordenarEmplFeados(regEmpleados.listaEmpleados);
                 } catch (IOException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+                exportar6.generarArchivo(mezcladoDirectamente);
+                
+                
                 break;
                 
             case "Mezcla equilibrada multiple":
