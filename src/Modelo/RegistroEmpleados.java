@@ -21,7 +21,15 @@ public class RegistroEmpleados {
     private String cuentaOrigen;
     private BigDecimal impuesto = new BigDecimal(0);
     public ArrayList<RegistroEmpleados> listaEmpleados = new ArrayList<RegistroEmpleados>();
-    
+
+    public RegistroEmpleados(String nombre, int monto, String cuentaDestino, long fechaTransferencia, String cuentaOrigen, BigDecimal impuesto) {
+        this.nombre = nombre;
+        this.monto = monto;
+        this.cuentaDestino = cuentaDestino;
+        this.fechaTransferencia = fechaTransferencia;
+        this.cuentaOrigen = cuentaOrigen;
+        this.impuesto = impuesto;
+    }    
 
     //Getters and setters
     public String getNombre() {

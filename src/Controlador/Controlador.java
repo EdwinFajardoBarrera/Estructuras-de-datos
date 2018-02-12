@@ -11,8 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -91,8 +96,7 @@ public class Controlador implements ActionListener{
         }
         
         if(vMain.getJBEmpleadoNuevo() == e.getSource()){ //Valida si el boton "+ Empleado nuevo" se presiona
-            vMain.setVisible(false);
-            RegistroEmpleados regEmpleados = new RegistroEmpleados();            
+            vMain.setVisible(false);            
             vRegistro.setVisible(true);
         }
         
@@ -143,24 +147,59 @@ public class Controlador implements ActionListener{
         //Botones para la vista "VRegistroEmpleados"
         if(vRegistro.getJBGuardar() == e.getSource()){ //Valida si boton "Guardar" se presiona
             
+            try{
             
-            String nombre = vRegistro.JTFNombre.getText();
+            String nombre = vRegistro.JTFNombre.getText();            
+            if(nombre.isEmpty() || nombre.length() > 50){
+                throw new EmptyException("");
+            }
+            
             int monto = Integer.parseInt(vRegistro.JTFMonto.getText());
-            String cuentaD = vRegistro.JTFCuentaD.getText();
+            if(monto < 10){
+                throw new LessThanTenException("");
+            }
+            
+            String cuentaD = vRegistro.JTFCuentaD.getText();            
+            if(cuentaD.length() != 10){
+                throw new AccountSizeException("");
+            }            
+            
             long fechaTrans = System.currentTimeMillis();
-            String cuentaOrigen = "12001082";
             
-            regEmpleados.setNombre(nombre);
-            regEmpleados.setMonto(monto);
-            regEmpleados.setCuentaDestino(cuentaD);
-            regEmpleados.setFechaTransferencia(fechaTrans);
-            regEmpleados.setCuentaOrigen("12001082");
-            regEmpleados.setImpuesto(BigDecimal.ZERO);
+            String cuentaOrigen = "1200108200";
+            if(cuentaOrigen.length() != 10){
+                throw new AccountSizeException("");
+            }
             
-            regEmpleados.listaEmpleados.add(regEmpleados);
+            BigDecimal impuesto = new BigDecimal(monto * .16);
+            impuesto.setScale(2, RoundingMode.UP);
+            
+            
+            RegistroEmpleados reg = new RegistroEmpleados(nombre, monto, cuentaD, fechaTrans, cuentaOrigen, impuesto);
+            
+            regEmpleados.listaEmpleados.add(reg);            
             
             inicializaTabla(vMain.JTEmpleados);
             
+            JOptionPane.showMessageDialog(null,"Guardado satisfactoriamente");
+            
+            }
+            
+            catch(InputMismatchException e1){
+                JOptionPane.showMessageDialog(null, "Escribio caracteres no validos");
+            }            
+            catch(NumberFormatException e2){
+                JOptionPane.showMessageDialog(null, e2.getMessage());                
+            }             
+            catch (EmptyException e3) {
+                JOptionPane.showMessageDialog(null,"No puede tener campos vacíos o el tamaño se excedio");                
+            } 
+            catch (LessThanTenException e4) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un monto mayor a $10");
+            }
+            catch (AccountSizeException e5) {
+                JOptionPane.showMessageDialog(null, "La cuenta debe constar de 10 digitos");
+            }
             
         }
         
