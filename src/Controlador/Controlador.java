@@ -12,11 +12,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -25,11 +22,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Edwin Roman Fajardo Barrera
  */
-public class Controlador implements ActionListener{
+public final class Controlador implements ActionListener{
     
-    private MainView vMain;
-    private VRegistroEmpleados vRegistro;
-    private RegistroEmpleados regEmpleados;
+    private final MainView vMain;
+    private final VRegistroEmpleados vRegistro;
+    private final RegistroEmpleados regEmpleados;
     
     
     public Controlador (MainView vMain, VRegistroEmpleados vRegistro, RegistroEmpleados regEmpleados){
@@ -86,6 +83,7 @@ public class Controlador implements ActionListener{
         
     }
     
+    @Override
     public void actionPerformed(ActionEvent e){
         String s = (String) vMain.JCBMOrdenamiento.getSelectedItem();
         String tipoOrdenamiento = null;
