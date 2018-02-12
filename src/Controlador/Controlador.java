@@ -41,12 +41,20 @@ public final class Controlador implements ActionListener{
     private MezclaEquilibradaMultiple mezclaEquilibradaMultiple;
     
     
-    public Controlador (MainView vMain, VRegistroEmpleados vRegistro, RegistroEmpleados regEmpleados){
+    public Controlador (MainView vMain, VRegistroEmpleados vRegistro, 
+            RegistroEmpleados regEmpleados, Burbuja burbuja, Insercion insercion, Mergesort mergesort, Quicksort quicksort, Shellsort shellsort, MezclaDirecta mezclaDirecta, MezclaEquilibradaMultiple mezclaEquilibradaMultiple){
         ItemListener s = null;
         
         this.vMain = vMain;
         this.vRegistro = vRegistro;
         this.regEmpleados = regEmpleados;
+        this.burbuja = burbuja;
+        this.insercion = insercion;
+        this.mergesort = mergesort;
+        this.quicksort = quicksort;
+        this.shellsort = shellsort;
+        this.mezclaDirecta = mezclaDirecta;
+        this.mezclaEquilibradaMultiple = mezclaEquilibradaMultiple;
         
         //Botones, solo se agrega el listener para saber si se presiona  o no
         this.vMain.JBSalir.addActionListener(this);
@@ -111,32 +119,38 @@ public final class Controlador implements ActionListener{
         
         if(vMain.getJBGenerarRep() == e.getSource()){ //Valida si el boton "Generar reporte" se presiona
             System.out.println("Presionaste generar reporte ");
+            ExportarArchivoCSV exportar = new ExportarArchivoCSV();
             
              switch(s){
             
             case "Insercion":
                 System.out.println("Insercion");
-                insercion.ordenarEmpleados(regEmpleados.listaEmpleados);                
+                insercion.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar.generarArchivo(regEmpleados.listaEmpleados);                
                 break;
                 
             case "Burbuja":
                 System.out.println("Burbuja");
                 burbuja.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar.generarArchivo(regEmpleados.listaEmpleados);
                 break;
                 
             case "Mergesort":
                 System.out.println("Mergesort");
                 mergesort.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar.generarArchivo(regEmpleados.listaEmpleados);
                 break;
                 
             case "Quicksort":
                 System.out.println("Quicksort");
                 quicksort.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar.generarArchivo(regEmpleados.listaEmpleados);
                 break;
                 
             case "Shellsort":
                 System.out.println("Shellsort");
                 shellsort.ordenarEmpleados(regEmpleados.listaEmpleados);
+                exportar.generarArchivo(regEmpleados.listaEmpleados);
                 break;
                 
             case "Mezcla directa":
@@ -144,6 +158,7 @@ public final class Controlador implements ActionListener{
             {
                 try {
                     mezclaDirecta.ordenarEmpleados(regEmpleados.listaEmpleados);
+                    exportar.generarArchivo(regEmpleados.listaEmpleados);
                 } catch (IOException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
