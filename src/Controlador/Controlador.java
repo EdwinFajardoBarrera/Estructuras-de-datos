@@ -167,7 +167,7 @@ public final class Controlador implements ActionListener{
                 ArrayList<RegistroEmpleados> shellsorteado = new ArrayList<RegistroEmpleados>();
                 
                 shellsorteado = shellsort.ordenarEmpleados(regEmpleados.listaEmpleados);
-                exportar5.generarArchivo(regEmpleados.listaEmpleados);
+                exportar5.generarArchivo(shellsorteado);
                 break;
                 
             case "Mezcla directa":
