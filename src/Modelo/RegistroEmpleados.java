@@ -6,6 +6,7 @@
 package Modelo;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,7 +19,9 @@ public class RegistroEmpleados {
     private String cuentaDestino;
     private long fechaTransferencia;
     private String cuentaOrigen;
-    private final BigDecimal impuesto = new BigDecimal(0);
+    private BigDecimal impuesto = new BigDecimal(0);
+    public ArrayList<RegistroEmpleados> listaEmpleados = new ArrayList<RegistroEmpleados>();
+    
 
     //Getters and setters
     public String getNombre() {
@@ -60,6 +63,14 @@ public class RegistroEmpleados {
     public void setCuentaOrigen(String cuentaOrigen) {
         this.cuentaOrigen = cuentaOrigen;
     }
-    
+
+    public BigDecimal getImpuesto() {
+        return impuesto;
+    }
+
+    public void setImpuesto(BigDecimal impuesto) {
+        this.impuesto = impuesto;
+    }
+
     
 }

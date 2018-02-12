@@ -17,12 +17,17 @@ public class Main {
     
     public static void main(String[] args) {
         
-        RegistroEmpleados regEmpleados = new RegistroEmpleados();
-        MainView mView = new MainView();
         
-        Controlador ctrl = new Controlador(mView, regEmpleados);
+        MainView vMain = new MainView();
+        VRegistroEmpleados vRegistro = new VRegistroEmpleados();
+        RegistroEmpleados regEmpleados = new RegistroEmpleados();
+        TBModeloEmpleados modEmpleados = new TBModeloEmpleados();
+        
+        
+        Controlador ctrl = new Controlador(vMain, vRegistro, regEmpleados, modEmpleados);
         ctrl.iniciar();
-        mView.setVisible(true);
+        vMain.setVisible(true);
+        vRegistro.setVisible(false);
         
         
     }

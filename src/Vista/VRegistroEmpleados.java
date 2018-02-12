@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author erofa
@@ -184,6 +186,25 @@ public class VRegistroEmpleados extends javax.swing.JFrame {
         });
     }
 
+    //Getters and setters de los botones
+    public JButton getJBGuardar() {
+        return JBGuardar;
+    }
+
+    public void setJBGuardar(JButton JBGuardar) {
+        this.JBGuardar = JBGuardar;
+    }
+
+    public JButton getJBSalir() {
+        return JBSalir;
+    }
+
+    public void setJBSalir(JButton JBSalir) {
+        this.JBSalir = JBSalir;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JBCuentaD;
     public javax.swing.JButton JBGuardar;
@@ -191,9 +212,9 @@ public class VRegistroEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel JLMonto;
     private javax.swing.JLabel JLNombre;
     private javax.swing.JLabel JLTitulo;
-    private javax.swing.JTextField JTFCuentaD;
-    private javax.swing.JTextField JTFMonto;
-    private javax.swing.JTextField JTFNombre;
+    public javax.swing.JTextField JTFCuentaD;
+    public javax.swing.JTextField JTFMonto;
+    public javax.swing.JTextField JTFNombre;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
