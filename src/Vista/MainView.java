@@ -75,7 +75,7 @@ public class MainView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(JTEmpleados);
 
-        JCBMOrdenamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Insercción", "Burbuja", "Mergesort", "Quicksort", "Shellsort", "Mezcla directa" }));
+        JCBMOrdenamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Insercion", "Burbuja", "Mergesort", "Quicksort", "Shellsort", "Mezcla directa", "Mezcla equilibrada multiple" }));
 
         JBGenerarRep.setText("Generar reporte");
 
