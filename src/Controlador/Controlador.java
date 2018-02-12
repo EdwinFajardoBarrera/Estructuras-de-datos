@@ -67,7 +67,7 @@ public final class Controlador implements ActionListener{
         //Combo box, se necesita validar cual tipo de ordenamiento esta está seleccionado
         this.vMain.JCBMOrdenamiento.addItemListener(s);
         
-        inicializaTabla(vMain.JTEmpleados);
+        configuraTabla(vMain.JTEmpleados);
         
     }
     
@@ -78,7 +78,8 @@ public final class Controlador implements ActionListener{
         vRegistro.setLocationRelativeTo(null);
     }
     
-    public void inicializaTabla(JTable tabla){
+    //Metodo para inicializar y actualizar el contenido de la tabla principal
+    public void configuraTabla(JTable tabla){
         Vector<String> titulos = new Vector<String>();
         Vector<Vector<Object>> datos = new Vector<Vector<Object>>();
         
@@ -208,7 +209,7 @@ public final class Controlador implements ActionListener{
             
             regEmpleados.listaEmpleados.add(reg);            
             
-            inicializaTabla(vMain.JTEmpleados);
+            configuraTabla(vMain.JTEmpleados);
             
             JOptionPane.showMessageDialog(null,"Guardado satisfactoriamente");
             
