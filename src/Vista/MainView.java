@@ -222,7 +222,7 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JButton JBSalir;
     public javax.swing.JComboBox<String> JCBMOrdenamiento;
     private javax.swing.JPanel JPRegistro;
-    private javax.swing.JTable JTEmpleados;
+    public javax.swing.JTable JTEmpleados;
     private javax.swing.JTextField JTFResultados;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;

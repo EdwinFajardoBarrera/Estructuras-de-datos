@@ -20,14 +20,12 @@ public class Main {
         
         MainView vMain = new MainView();
         VRegistroEmpleados vRegistro = new VRegistroEmpleados();
-        RegistroEmpleados regEmpleados = new RegistroEmpleados();
-        TBModeloEmpleados modEmpleados = new TBModeloEmpleados();
+        RegistroEmpleados regEmpleados = new RegistroEmpleados();        
         
-        
-        Controlador ctrl = new Controlador(vMain, vRegistro, regEmpleados, modEmpleados);
+        Controlador ctrl = new Controlador(vMain, vRegistro, regEmpleados);
         ctrl.iniciar();
         vMain.setVisible(true);
-        vRegistro.setVisible(false);
+        //vRegistro.setVisible(false);
         
         
     }

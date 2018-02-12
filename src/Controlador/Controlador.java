@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,16 +25,14 @@ public class Controlador implements ActionListener{
     private MainView vMain;
     private VRegistroEmpleados vRegistro;
     private RegistroEmpleados regEmpleados;
-    private TBModeloEmpleados tbModEmpleados;
     
     
-    public Controlador (MainView vMain, VRegistroEmpleados vRegistro, RegistroEmpleados regEmpleados, TBModeloEmpleados tbModEmpleados){
+    public Controlador (MainView vMain, VRegistroEmpleados vRegistro, RegistroEmpleados regEmpleados){
         ItemListener s = null;
         
         this.vMain = vMain;
         this.vRegistro = vRegistro;
         this.regEmpleados = regEmpleados;
-        this.tbModEmpleados = tbModEmpleados;
         
         //Botones, solo se agrega el listener para saber si se presiona  o no
         this.vMain.JBSalir.addActionListener(this);
@@ -44,6 +45,8 @@ public class Controlador implements ActionListener{
         //Combo box, se necesita validar cual tipo de ordenamiento esta está seleccionado
         this.vMain.JCBMOrdenamiento.addItemListener(s);
         
+        inicializaTabla(vMain.JTEmpleados);
+        
     }
     
     public void iniciar(){
@@ -53,11 +56,50 @@ public class Controlador implements ActionListener{
         vRegistro.setLocationRelativeTo(null);
     }
     
+    public void inicializaTabla(JTable tabla){
+        Vector<String> titulos = new Vector<String>();
+        Vector<Vector<Object>> datos = new Vector<Vector<Object>>();
+        
+        titulos.add("Nombre");
+        titulos.add("Monto");
+        titulos.add("Cuenta");
+        
+        for(int i=0; i < regEmpleados.listaEmpleados.size(); i++){
+            Vector<Object> row = new Vector<Object>();
+            
+            row.add(regEmpleados.listaEmpleados.get(i).getNombre());
+            row.add(regEmpleados.listaEmpleados.get(i).getMonto());
+            row.add(regEmpleados.listaEmpleados.get(i).getCuentaDestino());
+            
+            datos.add(row);       
+            
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel(datos, titulos);
+        
+        tabla.setModel(modelo);                 
+        
+    }
+    
     public void actionPerformed(ActionEvent e){
         String s = (String) vMain.JCBMOrdenamiento.getSelectedItem();
         String tipoOrdenamiento = null;
         
-        switch(s){
+        //Botones para la vista "MainView"
+        if(vMain.getJBSalir() == e.getSource()){     //Valida si el boton "Salir" se presiona        
+            vMain.dispose();        
+        }
+        
+        if(vMain.getJBEmpleadoNuevo() == e.getSource()){ //Valida si el boton "+ Empleado nuevo" se presiona
+            vMain.setVisible(false);
+            RegistroEmpleados regEmpleados = new RegistroEmpleados();            
+            vRegistro.setVisible(true);
+        }
+        
+        if(vMain.getJBGenerarRep() == e.getSource()){ //Valida si el boton "Generar reporte" se presiona
+            System.out.println("Presionaste generar reporte ");
+            
+             switch(s){
             
             case "Insercion":
                 System.out.println("Insercion");
@@ -95,19 +137,7 @@ public class Controlador implements ActionListener{
                 break;                
             
         }
-        
-        //Botones para la vista "MainView"
-        if(vMain.getJBSalir() == e.getSource()){     //Valida si el boton "Salir" se presiona        
-            vMain.dispose();        
-        }
-        
-        if(vMain.getJBEmpleadoNuevo() == e.getSource()){ //Valida si el boton "+ Empleado nuevo" se presiona
-            vMain.setVisible(false);
-            vRegistro.setVisible(true);
-        }
-        
-        if(vMain.getJBGenerarRep() == e.getSource()){ //Valida si el boton "Generar reporte" se presiona
-            System.out.println("Presionaste generar reporte ");
+            
         }
         
         //Botones para la vista "VRegistroEmpleados"
@@ -129,12 +159,13 @@ public class Controlador implements ActionListener{
             
             regEmpleados.listaEmpleados.add(regEmpleados);
             
+            inicializaTabla(vMain.JTEmpleados);
             
             
         }
         
         if(vRegistro.getJBSalir() == e.getSource()){ //Valia si el boton "Salir" se presiona
-            vRegistro.setVisible(false);
+            vRegistro.dispose();
             vMain.setVisible(true);
         }
         
