@@ -93,10 +93,9 @@ public class MainView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPRegistroLayout.createSequentialGroup()
                         .addComponent(JCBMOrdenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JBGenerarRep))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPRegistroLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(JTFResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(JPRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(JTFResultados)
+                            .addComponent(JBGenerarRep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         JPRegistroLayout.setVerticalGroup(
@@ -222,7 +221,7 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JButton JBSalir;
     public javax.swing.JComboBox<String> JCBMOrdenamiento;
     private javax.swing.JPanel JPRegistro;
-    private javax.swing.JTable JTEmpleados;
+    public javax.swing.JTable JTEmpleados;
     private javax.swing.JTextField JTFResultados;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
