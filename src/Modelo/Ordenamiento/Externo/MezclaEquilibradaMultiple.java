@@ -10,6 +10,6 @@ package Modelo.Ordenamiento.Externo;
  *
  * @author ivana
  */
-public class MezclaEquilibradaMúltiple {
+public class MezclaEquilibradaMultiple {
     
 }

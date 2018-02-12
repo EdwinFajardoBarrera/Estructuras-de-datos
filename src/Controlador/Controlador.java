@@ -6,14 +6,19 @@
 package Controlador;
 
 import Modelo.*;
+import Modelo.Ordenamiento.Interno.*;
+import Modelo.Ordenamiento.Externo.*;
 import Vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.InputMismatchException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +32,13 @@ public final class Controlador implements ActionListener{
     private final MainView vMain;
     private final VRegistroEmpleados vRegistro;
     private final RegistroEmpleados regEmpleados;
+    private Burbuja burbuja;
+    private Insercion insercion;
+    private Mergesort mergesort;
+    private Quicksort quicksort;
+    private Shellsort shellsort;
+    private MezclaDirecta mezclaDirecta;
+    private MezclaEquilibradaMultiple mezclaEquilibradaMultiple;
     
     
     public Controlador (MainView vMain, VRegistroEmpleados vRegistro, RegistroEmpleados regEmpleados){
@@ -86,7 +98,6 @@ public final class Controlador implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         String s = (String) vMain.JCBMOrdenamiento.getSelectedItem();
-        String tipoOrdenamiento = null;
         
         //Botones para la vista "MainView"
         if(vMain.getJBSalir() == e.getSource()){     //Valida si el boton "Salir" se presiona        
@@ -105,37 +116,42 @@ public final class Controlador implements ActionListener{
             
             case "Insercion":
                 System.out.println("Insercion");
-                tipoOrdenamiento = "Interno";
+                insercion.ordenarEmpleados(regEmpleados.listaEmpleados);                
                 break;
                 
             case "Burbuja":
                 System.out.println("Burbuja");
-                tipoOrdenamiento = "Interno";
+                burbuja.ordenarEmpleados(regEmpleados.listaEmpleados);
                 break;
                 
             case "Mergesort":
                 System.out.println("Mergesort");
-                tipoOrdenamiento = "Interno";
+                mergesort.ordenarEmpleados(regEmpleados.listaEmpleados);
                 break;
                 
             case "Quicksort":
                 System.out.println("Quicksort");
-                tipoOrdenamiento = "Interno";
+                quicksort.ordenarEmpleados(regEmpleados.listaEmpleados);
                 break;
                 
             case "Shellsort":
                 System.out.println("Shellsort");
-                tipoOrdenamiento = "Interno";
+                shellsort.ordenarEmpleados(regEmpleados.listaEmpleados);
                 break;
                 
             case "Mezcla directa":
                 System.out.println("Mezcla directa");
-                tipoOrdenamiento = "Externo";
+            {
+                try {
+                    mezclaDirecta.ordenarEmpleados(regEmpleados.listaEmpleados);
+                } catch (IOException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
                 
             case "Mezcla equilibrada multiple":
                 System.out.println("Mezcla equilibrada multiple");
-                tipoOrdenamiento = "Externo";
                 break;                
             
         }
