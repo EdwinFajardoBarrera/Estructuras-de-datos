@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 /**
@@ -30,7 +31,7 @@ public class ArchivoTxt {
             fichero1 = new FileWriter(archivo); 
             pw = new PrintWriter(fichero1);
             for(RegistroEmpleados nom : nomina){
-                String Temp2 = Integer.toString(nom.getMonto());
+                String Temp2 = nom.getImpuesto().toString();
                 pw.println(Temp2);
             }
             fichero1.close();
@@ -64,16 +65,32 @@ public class ArchivoTxt {
 
     }
     
-    public int[] guardarTxtEnArreglo(String datosTxt, ArrayList<RegistroEmpleados> nomina){
+    public Double[] guardarTxtEnArreglo(String datosTxt, List<RegistroEmpleados> nomina){
         
-        int[] arreglo = new int[nomina.size()];
+        Double[] arreglo = new Double[nomina.size()];
         
         StringTokenizer tokens = new StringTokenizer(datosTxt, SALTO);
         
         for(int i = 0; i < nomina.size(); i++){
             
             String str = tokens.nextToken(); 
-            arreglo[i] = Integer.valueOf(str);
+            arreglo[i] = Double.valueOf(str);
+
+        }
+        
+        return arreglo;
+    }
+    
+    public Double[] guardarTxtEnArregloEM(String datosTxt, List<RegistroEmpleados> nomina){
+        
+        Double[] arreglo = new Double[nomina.size()];
+        
+        StringTokenizer tokens = new StringTokenizer(datosTxt, SALTO);
+        
+        for(int i = nomina.size() - 1; i >= 0; i--){
+            
+            String str = tokens.nextToken(); 
+            arreglo[i] = Double.valueOf(str);
 
         }
         

@@ -24,7 +24,7 @@ public class ExportarArchivoCSV {
         
         try {
             
-            FileWriter writer = new FileWriter(archivo, false); 
+            FileWriter writer = new FileWriter(archivo, true); 
             CsvWriter csvSalida = new CsvWriter(writer, ','); 
             
             csvSalida.write("Nombre");

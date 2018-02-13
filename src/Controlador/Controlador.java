@@ -174,18 +174,17 @@ public final class Controlador implements ActionListener{
                 System.out.println("Mezcla directa");
                 ExportarArchivoCSV exportar6 = new ExportarArchivoCSV();
                 ArrayList<RegistroEmpleados> mezcladoDirectamente = new ArrayList<RegistroEmpleados>();
-                
+             
             {
                 try {
-                    mezcladoDirectamente = mezclaDirecta.ordenarEmplFeados(regEmpleados.listaEmpleados);
+                    mezcladoDirectamente = mezclaDirecta.ordenarEmpleados(regEmpleados.listaEmpleados);
                 } catch (IOException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-                exportar6.generarArchivo(mezcladoDirectamente);
-                
-                
+                exportar6.generarArchivo(mezcladoDirectamente);               
                 break;
+                
                 
             case "Mezcla equilibrada multiple":
                 System.out.println("Mezcla equilibrada multiple");

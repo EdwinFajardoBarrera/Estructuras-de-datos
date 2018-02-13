@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -82,7 +83,8 @@ public class MezclaDirecta {
 
     public void fusionar(String F, String F1, String F2, int part) throws FileNotFoundException, IOException {
 
-        int r1 = 0, r2 = 0, k = 0, l = 0;
+        double r1 = 0, r2 = 0;
+        int k = 0, l = 0;
         boolean b1 = false, b2 = false;
 
         File original = new File(F);
@@ -97,36 +99,36 @@ public class MezclaDirecta {
 
         FileWriter writer = new FileWriter(original);
 
-        if (scanner1.hasNextInt()) {
-            r1 = scanner1.nextInt();
+        if (scanner1.hasNextDouble()) {
+            r1 = scanner1.nextDouble();
             b1 = true;
         }
 
-        if (scanner2.hasNextInt()) {
-            r2 = scanner2.nextInt();
+        if (scanner2.hasNextDouble()) {
+            r2 = scanner2.nextDouble();
             b2 = true;
         }
 
-        while ((scanner1.hasNextInt() || b1) && (scanner2.hasNextInt() || b2)) {
+        while ((scanner1.hasNextDouble() || b1) && (scanner2.hasNextDouble() || b2)) {
 
             k = 0;
             l = 0;
 
             while (k < part && b1 && l < part && b2) {
-                if (r1 >= r2) { //mayor a menor
+                if (r1 >= r2) {
                     writer.write(r1 + SALTO);
                     k++;
                     b1 = false;
-                    if (scanner1.hasNextInt()) {
-                        r1 = scanner1.nextInt();
+                    if (scanner1.hasNextDouble()) {
+                        r1 = scanner1.nextDouble();
                         b1 = true;
                     }
                 } else {
                     writer.write(r2 + SALTO);
                     l++;
                     b2 = false;
-                    if (scanner2.hasNextInt()) {
-                        r2 = scanner2.nextInt();
+                    if (scanner2.hasNextDouble()) {
+                        r2 = scanner2.nextDouble();
                         b2 = true;
                     }
                 }
@@ -136,8 +138,8 @@ public class MezclaDirecta {
                 writer.write(r1 + SALTO);
                 b1 = false;
                 k++;
-                if (scanner1.hasNextInt()) {
-                    r1 = scanner1.nextInt();
+                if (scanner1.hasNextDouble()) {
+                    r1 = scanner1.nextDouble();
                     b1 = true;
                 }
             }
@@ -146,8 +148,8 @@ public class MezclaDirecta {
                 writer.write(r2 + SALTO);
                 b2 = false;
                 l++;
-                if (scanner2.hasNextInt()) {
-                    r2 = scanner2.nextInt();
+                if (scanner2.hasNextDouble()) {
+                    r2 = scanner2.nextDouble();
                     b2 = true;
                 }
             }
@@ -162,12 +164,12 @@ public class MezclaDirecta {
             writer.write(r2 + SALTO);
         }
 
-        while (scanner1.hasNextInt()) {
-            writer.write(scanner1.nextInt() + SALTO);
+        while (scanner1.hasNextDouble()) {
+            writer.write(scanner1.nextDouble() + SALTO);
         }
 
-        while (scanner2.hasNextInt()) {
-            writer.write(scanner2.nextInt() + SALTO);
+        while (scanner2.hasNextDouble()) {
+            writer.write(scanner2.nextDouble() + SALTO);
         }
 
         scanner1.close();
@@ -193,13 +195,13 @@ public class MezclaDirecta {
         return tamano;
 
     }
-
-    public ArrayList<RegistroEmpleados> ordenarEmplFeados(ArrayList<RegistroEmpleados> nomina) throws IOException{
+    
+    public ArrayList<RegistroEmpleados> ordenarEmpleados(ArrayList<RegistroEmpleados> nomina) throws IOException{        
         ArchivoTxt archivo = new ArchivoTxt();
         
         ArrayList<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         
-        int[] arreglo = new int[nomina.size()];
+        Double[] arreglo = new Double[nomina.size()];
         int i = 0;
         
         archivo.escribirTxt("F.txt", nomina);
@@ -219,13 +221,13 @@ public class MezclaDirecta {
         
             for(RegistroEmpleados nom : nomina){ 
 
-                if(arreglo[i] == nom.getMonto()){
+                if(Objects.equals(arreglo[i], nom.getImpuesto())){
                     nominaArreglada.add(nom);
                 }
                 
             }
             
-        }
+        }  
         
         return nominaArreglada;
         
