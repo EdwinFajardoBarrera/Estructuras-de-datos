@@ -200,12 +200,16 @@ public final class Controlador implements ActionListener{
                 ArrayList<RegistroEmpleados> shellsorteado = new ArrayList<RegistroEmpleados>();
                 
                 shellsorteado = shellsort.ordenarEmpleados(regEmpleados.listaEmpleados);
+<<<<<<< HEAD
                 exportar5.generarArchivo(regEmpleados.listaEmpleados);
                 
                 long tiempoFinal5 = System.currentTimeMillis();                
                 long tiempoTotal5 = tiempoFinal5 - tiempoInicial5;
                 vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal5 / 1000 + " segundos");
                 
+=======
+                exportar5.generarArchivo(shellsorteado);
+>>>>>>> 1cb439fec991a5353c1dadd31688b6f2e22ddce4
                 break;
                 
             case "Mezcla directa":
@@ -214,7 +218,7 @@ public final class Controlador implements ActionListener{
                 
                 ExportarArchivoCSV exportar6 = new ExportarArchivoCSV();
                 ArrayList<RegistroEmpleados> mezcladoDirectamente = new ArrayList<RegistroEmpleados>();
-                
+             
             {
                 try {
                     mezcladoDirectamente = mezclaDirecta.ordenarEmpleados(regEmpleados.listaEmpleados);
@@ -222,13 +226,18 @@ public final class Controlador implements ActionListener{
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+<<<<<<< HEAD
                 exportar6.generarArchivo(mezcladoDirectamente);
                 
                 long tiempoFinal6 = System.currentTimeMillis();                
                 long tiempoTotal6 = tiempoFinal6 - tiempoInicial6;
                 vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal6 / 1000 + " segundos");                
                 
+=======
+                exportar6.generarArchivo(mezcladoDirectamente);               
+>>>>>>> 1cb439fec991a5353c1dadd31688b6f2e22ddce4
                 break;
+                
                 
             case "Mezcla equilibrada multiple":
                 System.out.println("Mezcla equilibrada multiple");
