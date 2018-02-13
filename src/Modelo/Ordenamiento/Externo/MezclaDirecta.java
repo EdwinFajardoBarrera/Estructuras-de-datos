@@ -14,7 +14,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -221,17 +220,13 @@ public class MezclaDirecta {
         
             for(RegistroEmpleados nom : nomina){ 
 
-<<<<<<< HEAD
                 if(arreglo[i] == nom.getImpuesto().doubleValue()){
-=======
-                if(Objects.equals(arreglo[i], nom.getImpuesto())){
->>>>>>> 1cb439fec991a5353c1dadd31688b6f2e22ddce4
                     nominaArreglada.add(nom);
                 }
                 
             }
             
-        }  
+        }
         
    
         

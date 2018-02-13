@@ -65,11 +65,7 @@ public class ArchivoTxt {
 
     }
     
-<<<<<<< HEAD
     public Double[] guardarTxtEnArreglo(String datosTxt, ArrayList<RegistroEmpleados> nomina){
-=======
-    public Double[] guardarTxtEnArreglo(String datosTxt, List<RegistroEmpleados> nomina){
->>>>>>> 1cb439fec991a5353c1dadd31688b6f2e22ddce4
         
         Double[] arreglo = new Double[nomina.size()];
         
@@ -85,11 +81,7 @@ public class ArchivoTxt {
         return arreglo;
     }
     
-<<<<<<< HEAD
     public Double[] guardarTxtEnArregloEM(String datosTxt, ArrayList<RegistroEmpleados> nomina){
-=======
-    public Double[] guardarTxtEnArregloEM(String datosTxt, List<RegistroEmpleados> nomina){
->>>>>>> 1cb439fec991a5353c1dadd31688b6f2e22ddce4
         
         Double[] arreglo = new Double[nomina.size()];
         
