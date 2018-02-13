@@ -42,7 +42,6 @@ public class VRegistroEmpleados extends javax.swing.JFrame {
         JTFCuentaD = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         JLTitulo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         JLTitulo.setText("Generar registro de empleado");

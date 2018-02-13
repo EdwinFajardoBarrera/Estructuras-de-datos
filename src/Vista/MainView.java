@@ -79,6 +79,12 @@ public class MainView extends javax.swing.JFrame {
 
         JBGenerarRep.setText("Generar reporte");
 
+        JTFResultados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFResultadosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPRegistroLayout = new javax.swing.GroupLayout(JPRegistro);
         JPRegistro.setLayout(JPRegistroLayout);
         JPRegistroLayout.setHorizontalGroup(
@@ -93,9 +99,8 @@ public class MainView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPRegistroLayout.createSequentialGroup()
                         .addComponent(JCBMOrdenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(JPRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JTFResultados)
-                            .addComponent(JBGenerarRep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(JBGenerarRep))
+                    .addComponent(JTFResultados))
                 .addContainerGap())
         );
         JPRegistroLayout.setVerticalGroup(
@@ -143,6 +148,10 @@ public class MainView extends javax.swing.JFrame {
     private void JBEmpleadoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEmpleadoNuevoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JBEmpleadoNuevoActionPerformed
+
+    private void JTFResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFResultadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFResultadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,7 +231,7 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> JCBMOrdenamiento;
     private javax.swing.JPanel JPRegistro;
     public javax.swing.JTable JTEmpleados;
-    private javax.swing.JTextField JTFResultados;
+    public javax.swing.JTextField JTFResultados;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

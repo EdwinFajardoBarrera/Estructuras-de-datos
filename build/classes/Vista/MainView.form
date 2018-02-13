@@ -79,11 +79,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="JCBMOrdenamiento" min="-2" pref="174" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="JTFResultados" max="32767" attributes="0"/>
-                              <Component id="JBGenerarRep" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="JBGenerarRep" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="JTFResultados" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -172,6 +170,12 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="JTFResultados">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTFResultadosActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

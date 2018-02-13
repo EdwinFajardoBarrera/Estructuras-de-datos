@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.Ordenamiento.Externo.MezclaEquilibradaMultiple;
 import Modelo.*;
 import Modelo.Ordenamiento.Interno.*;
 import Modelo.Ordenamiento.Externo.*;
@@ -116,80 +117,141 @@ public final class Controlador implements ActionListener{
         }
         
         if(vMain.getJBEmpleadoNuevo() == e.getSource()){ //Valida si el boton "+ Empleado nuevo" se presiona
-            vMain.setVisible(false);            
+            //vMain.setVisible(false);            
             vRegistro.setVisible(true);
+            vRegistro.setLocationRelativeTo(vMain);
         }
         
         if(vMain.getJBGenerarRep() == e.getSource()){ //Valida si el boton "Generar reporte" se presiona
-            System.out.println("Presionaste generar reporte ");
+            //System.out.println("Presionaste generar reporte ");
             
              switch(s){
             
             case "Insercion":
                 System.out.println("Insercion");
+                long tiempoInicial = System.currentTimeMillis();
+
                 ExportarArchivoCSV exportar = new ExportarArchivoCSV();
                 ArrayList<RegistroEmpleados> insercionado = new ArrayList<RegistroEmpleados>();
                 
                 insercionado = insercion.ordenarEmpleados(regEmpleados.listaEmpleados);
-                exportar.generarArchivo(insercionado);                
+                exportar.generarArchivo(insercionado);
+                
+                long tiempoFinal = System.currentTimeMillis();                
+                long tiempoTotal = (tiempoFinal - tiempoInicial);
+
+                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal / 1000 + " segundos");
+                
                 break;
                 
             case "Burbuja":
                 System.out.println("Burbuja");
+                long tiempoInicial2 = System.currentTimeMillis();
+                
                 ExportarArchivoCSV exportar2 = new ExportarArchivoCSV();
                 ArrayList<RegistroEmpleados> burbujeado = new ArrayList<RegistroEmpleados>();
                 
                 burbujeado = burbuja.ordenarEmpleados(regEmpleados.listaEmpleados);
                 exportar2.generarArchivo(burbujeado);
+                
+                long tiempoFinal2 = System.currentTimeMillis();                
+                long tiempoTotal2 = tiempoFinal2 - tiempoInicial2;
+                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal2 / 1000 + " segundos");
+                
                 break;
                 
             case "Mergesort":
                 System.out.println("Mergesort");
+                long tiempoInicial3 = System.currentTimeMillis();
+                
                 ExportarArchivoCSV exportar3 = new ExportarArchivoCSV();
                 ArrayList<RegistroEmpleados> mergesorteado = new ArrayList<RegistroEmpleados>();
                 
                 mergesorteado = mergesort.ordenarEmpleados(regEmpleados.listaEmpleados);
                 exportar3.generarArchivo(mergesorteado);
+                
+                long tiempoFinal3 = System.currentTimeMillis();                
+                long tiempoTotal3 = tiempoFinal3 - tiempoInicial3;
+                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal3 / 1000 + " segundos");
+                
                 break;
                 
             case "Quicksort":                
                 System.out.println("Quicksort");
+                long tiempoInicial4 = System.currentTimeMillis();
+                
                 ExportarArchivoCSV exportar4 = new ExportarArchivoCSV();
                 ArrayList<RegistroEmpleados> quicksorteado = new ArrayList<RegistroEmpleados>();
                 
                 quicksorteado = quicksort.ordenarEmpleados(regEmpleados.listaEmpleados);
                 exportar4.generarArchivo(quicksorteado);
+                
+                long tiempoFinal4 = System.currentTimeMillis();                
+                long tiempoTotal4 = tiempoFinal4 - tiempoInicial4;
+                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal4 / 1000 + " segundos");
+                
                 break;
                 
             case "Shellsort":                
                 System.out.println("Shellsort");
+                long tiempoInicial5 = System.currentTimeMillis();
+                
                 ExportarArchivoCSV exportar5 = new ExportarArchivoCSV();
                 ArrayList<RegistroEmpleados> shellsorteado = new ArrayList<RegistroEmpleados>();
                 
                 shellsorteado = shellsort.ordenarEmpleados(regEmpleados.listaEmpleados);
                 exportar5.generarArchivo(regEmpleados.listaEmpleados);
+                
+                long tiempoFinal5 = System.currentTimeMillis();                
+                long tiempoTotal5 = tiempoFinal5 - tiempoInicial5;
+                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal5 / 1000 + " segundos");
+                
                 break;
                 
             case "Mezcla directa":
                 System.out.println("Mezcla directa");
+                long tiempoInicial6 = System.currentTimeMillis();
+                
                 ExportarArchivoCSV exportar6 = new ExportarArchivoCSV();
                 ArrayList<RegistroEmpleados> mezcladoDirectamente = new ArrayList<RegistroEmpleados>();
                 
             {
                 try {
-                    mezcladoDirectamente = mezclaDirecta.ordenarEmplFeados(regEmpleados.listaEmpleados);
+                    mezcladoDirectamente = mezclaDirecta.ordenarEmpleados(regEmpleados.listaEmpleados);
                 } catch (IOException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
                 exportar6.generarArchivo(mezcladoDirectamente);
                 
+                long tiempoFinal6 = System.currentTimeMillis();                
+                long tiempoTotal6 = tiempoFinal6 - tiempoInicial6;
+                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal6 / 1000 + " segundos");                
                 
                 break;
                 
             case "Mezcla equilibrada multiple":
                 System.out.println("Mezcla equilibrada multiple");
-                break;                
+                long tiempoInicial7 = System.currentTimeMillis();
+                
+                ExportarArchivoCSV exportar7 = new ExportarArchivoCSV();
+                ArrayList<RegistroEmpleados> mezclandoEM = new ArrayList<RegistroEmpleados>();
+                
+            {
+                try {
+                    mezclandoEM = mezclaEquilibradaMultiple.ordenarEmpleados(regEmpleados.listaEmpleados);
+                } catch (IOException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+                exportar7.generarArchivo(mezclandoEM);
+                
+                long tiempoFinal7 = System.currentTimeMillis();                
+                long tiempoTotal7 = tiempoFinal7 - tiempoInicial7;
+                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal7 / 1000 + " segundos");
+                
+                break;                                
             
         }
             

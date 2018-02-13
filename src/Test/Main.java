@@ -5,6 +5,7 @@
  */
 package Test;
 
+import Modelo.Ordenamiento.Externo.MezclaEquilibradaMultiple;
 import Modelo.*;
 import Controlador.*;
 import Modelo.Ordenamiento.Externo.*;
