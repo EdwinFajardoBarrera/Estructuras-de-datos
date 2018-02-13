@@ -31,55 +31,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public final class Controlador implements ActionListener{
     
-    private MainView vMain;
-    private VRegistroEmpleados vRegistro;
+    private final MainView vMain;
+    private final VRegistroEmpleados vRegistro;
     private RegistroEmpleados regEmpleados;
-//    private Burbuja burbuja;
-//    private Insercion insercion;
-//    private Mergesort mergesort;
-//    private Quicksort quicksort;
-//    private Shellsort shellsort;
-//    private MezclaDirecta mezclaDirecta;
-//    private MezclaEquilibradaMultiple mezclaEquilibradaMultiple;
     private List<RegistroEmpleados> nomina; 
-    
-    
-//    public Controlador (MainView vMain, VRegistroEmpleados vRegistro, RegistroEmpleados regEmpleados, Burbuja burbuja, Insercion insercion, Mergesort mergesort, Quicksort quicksort, Shellsort shellsort, MezclaDirecta mezclaDirecta, MezclaEquilibradaMultiple mezclaEquilibradaMultiple, List<RegistroEmpleados> nomina){
-//        ItemListener s = null;
-//        
-//        this.vMain = vMain;
-//        this.vRegistro = vRegistro;
-//        this.regEmpleados = regEmpleados;
-//        this.burbuja = burbuja;
-//        this.insercion = insercion;
-//        this.mergesort = mergesort;
-//        this.quicksort = quicksort;
-//        this.shellsort = shellsort;
-//        this.mezclaDirecta = mezclaDirecta;
-//        this.mezclaEquilibradaMultiple = mezclaEquilibradaMultiple;
-//        this.nomina = nomina;
-//        
-//        
-//        //Botones, solo se agrega el listener para saber si se presiona  o no
-//        this.vMain.JBSalir.addActionListener(this);
-//        this.vMain.JBGenerarRep.addActionListener(this);
-//        this.vMain.JBEmpleadoNuevo.addActionListener(this);
-//        
-//        this.vRegistro.JBSalir.addActionListener(this);
-//        this.vRegistro.JBGuardar.addActionListener(this);
-//        
-//        //Combo box, se necesita validar cual tipo de ordenamiento esta está seleccionado
-//        this.vMain.JCBMOrdenamiento.addItemListener(s);
-//        
-//        configuraTabla(vMain.JTEmpleados);
-//        
-//    }
     
         public Controlador(MainView vMain, List<RegistroEmpleados> nomina, VRegistroEmpleados vRegistro){
         this.vMain = vMain;
         this.nomina = nomina;
         this.vRegistro = vRegistro;
-        //this.regEmpleados = regEmpleados;
         ItemListener s = null;
         
         //Botones, solo se agrega el listener para saber si se presiona  o no
@@ -103,42 +63,7 @@ public final class Controlador implements ActionListener{
         vRegistro.setLocationRelativeTo(null);
     }
     
-    //Metodo para inicializar y actualizar el contenido de la tabla principal
-//    public void configuraTabla(JTable tabla){
-//        Vector<String> titulos = new Vector<String>();
-//        Vector<Vector<Object>> datos = new Vector<Vector<Object>>();
-//        
-//        titulos.add("Nombre");
-//        titulos.add("Monto");
-//        titulos.add("Cuenta");
-//        
-//        for(int i=0; i < nomina.size(); i++){
-//            Vector<Object> row = new Vector<Object>();
-//            
-//            row.add(nomina.get(i).getNombre());
-//            row.add(nomina.get(i).getMonto());
-//            row.add(nomina.get(i).getCuentaDestino());
-//            
-//            datos.add(row);       
-//            
-//        }
-//
-////            for (RegistroEmpleados nom : nomina) {
-////            Vector<Object> row = new Vector<Object>();
-////            
-////            row.add(nom.getNombre());
-////            row.add(nom.getMonto());
-////            row.add(nom.getCuentaDestino());
-////            
-////            datos.add(row);
-////        }
-//        
-//        DefaultTableModel modelo = new DefaultTableModel(datos, titulos);
-//        
-//        tabla.setModel(modelo);                 
-//        
-//    }
-    
+    //Metodo para inicializar y actualizar el contenido de la tabla principal   
         public void configuraTabla(JTable tabla){
         Vector<String> titulos = new Vector<String>();
         Vector<Vector<Object>> datos = new Vector<Vector<Object>>();
@@ -179,143 +104,150 @@ public final class Controlador implements ActionListener{
         }
         
         if(vMain.getJBGenerarRep() == e.getSource()){ //Valida si el boton "Generar reporte" se presiona
-            //System.out.println("Presionaste generar reporte ");
+            //System.out.println("Presionó generar reporte ");
             
              switch(s){
             
-            case "Insercion":
-                Insercion insercion = new Insercion();
-                System.out.println("Insercion");
-                long tiempoInicial = System.currentTimeMillis();
+                //Ordena por insercion
+                case "Insercion":
+                    
+                    long tiempoInicial = System.currentTimeMillis();
+                    System.out.println("Insercion");
+                    Insercion insercion = new Insercion();
 
-                ExportarArchivoCSV exportar = new ExportarArchivoCSV();
-                //ArrayList<RegistroEmpleados> insercionado = new ArrayList<RegistroEmpleados>();
+                    ExportarArchivoCSV exportar = new ExportarArchivoCSV();                
                 
-                nomina = insercion.ordenarEmpleados(nomina);
-                exportar.generarArchivo(nomina);
+                    nomina = insercion.ordenarEmpleados(nomina);
+                    exportar.generarArchivo(nomina);
                 
-                long tiempoFinal = System.currentTimeMillis();                
-                long tiempoTotal = (tiempoFinal - tiempoInicial);
+                    long tiempoFinal = System.currentTimeMillis();                
+                    long tiempoTotal = (tiempoFinal - tiempoInicial);
 
-                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal / 1000 + " segundos");
+                    vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal / 1000 + " segundos");
                 
                 break;
                 
-            case "Burbuja":
-                Burbuja burbuja = new Burbuja();
-                System.out.println("Burbuja");
-                long tiempoInicial2 = System.currentTimeMillis();
-                
-                ExportarArchivoCSV exportar2 = new ExportarArchivoCSV();
-                //ArrayList<RegistroEmpleados> burbujeado = new ArrayList<RegistroEmpleados>();
-                
-                nomina = burbuja.ordenarEmpleados(nomina);
-                exportar2.generarArchivo(nomina);
-                
-                long tiempoFinal2 = System.currentTimeMillis();                
-                long tiempoTotal2 = tiempoFinal2 - tiempoInicial2;
-                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal2 / 1000 + " segundos");
-                
+                //Ordena por burbuja
+                case "Burbuja":
+                    
+                    long tiempoInicial2 = System.currentTimeMillis();
+                    System.out.println("Burbuja");
+                    Burbuja burbuja = new Burbuja();
+
+                    ExportarArchivoCSV exportar2 = new ExportarArchivoCSV();
+
+                    nomina = burbuja.ordenarEmpleados(nomina);
+                    exportar2.generarArchivo(nomina);
+
+                    long tiempoFinal2 = System.currentTimeMillis();                
+                    long tiempoTotal2 = tiempoFinal2 - tiempoInicial2;
+                    vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal2 / 1000 + " segundos");
+
                 break;
                 
-            case "Mergesort":
-                Mergesort mergesort = new Mergesort();
-                System.out.println("Mergesort");
-                long tiempoInicial3 = System.currentTimeMillis();
-                
-                ExportarArchivoCSV exportar3 = new ExportarArchivoCSV();
-                //ArrayList<RegistroEmpleados> mergesorteado = new ArrayList<RegistroEmpleados>();
-                
-                nomina = mergesort.ordenarEmpleados(nomina);
-                exportar3.generarArchivo(nomina);
-                
-                long tiempoFinal3 = System.currentTimeMillis();                
-                long tiempoTotal3 = tiempoFinal3 - tiempoInicial3;
-                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal3 / 1000 + " segundos");
-                
+                //Ordena por mergesort
+                case "Mergesort":
+                    
+                    System.out.println("Mergesort");
+                    long tiempoInicial3 = System.currentTimeMillis();
+                    Mergesort mergesort = new Mergesort();
+
+                    ExportarArchivoCSV exportar3 = new ExportarArchivoCSV();
+
+                    nomina = mergesort.ordenarEmpleados(nomina);
+                    exportar3.generarArchivo(nomina);
+
+                    long tiempoFinal3 = System.currentTimeMillis();                
+                    long tiempoTotal3 = tiempoFinal3 - tiempoInicial3;
+                    vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal3 / 1000 + " segundos");
+
                 break;
                 
-            case "Quicksort":
-                Quicksort quicksort = new Quicksort();
-                System.out.println("Quicksort");
-                long tiempoInicial4 = System.currentTimeMillis();
-                
-                ExportarArchivoCSV exportar4 = new ExportarArchivoCSV();
-                //ArrayList<RegistroEmpleados> quicksorteado = new ArrayList<RegistroEmpleados>();
-                
-                nomina = quicksort.ordenarEmpleados(nomina);
-                exportar4.generarArchivo(nomina);
-                
-                long tiempoFinal4 = System.currentTimeMillis();                
-                long tiempoTotal4 = tiempoFinal4 - tiempoInicial4;
-                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal4 / 1000 + " segundos");                
-                
-                
+                //Ordena por quicksort
+                case "Quicksort":
+                    
+                    long tiempoInicial4 = System.currentTimeMillis();                   
+                    System.out.println("Quicksort");
+                    Quicksort quicksort = new Quicksort();
+
+                    ExportarArchivoCSV exportar4 = new ExportarArchivoCSV();
+
+                    nomina = quicksort.ordenarEmpleados(nomina);
+                    exportar4.generarArchivo(nomina);
+
+                    long tiempoFinal4 = System.currentTimeMillis();                
+                    long tiempoTotal4 = tiempoFinal4 - tiempoInicial4;
+                    vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal4 / 1000 + " segundos");
+                    
                 break;
                 
-            case "Shellsort":
-                Shellsort shellsort = new Shellsort();
-                System.out.println("Shellsort");
-                long tiempoInicial5 = System.currentTimeMillis();
-                
-                ExportarArchivoCSV exportar5 = new ExportarArchivoCSV();
-                //ArrayList<RegistroEmpleados> shellsorteado = new ArrayList<RegistroEmpleados>();
-                
-                nomina = shellsort.ordenarEmpleados(nomina);
-                exportar5.generarArchivo(nomina);                
-                
-                long tiempoFinal5 = System.currentTimeMillis();                
-                long tiempoTotal5 = tiempoFinal5 - tiempoInicial5;
-                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal5 / 1000 + " segundos");
-               
+                //Ordena por shellsort
+                case "Shellsort":
+                    
+                    long tiempoInicial5 = System.currentTimeMillis();
+                    System.out.println("Shellsort");
+                    Shellsort shellsort = new Shellsort();
+
+                    ExportarArchivoCSV exportar5 = new ExportarArchivoCSV();
+
+                    nomina = shellsort.ordenarEmpleados(nomina);
+                    exportar5.generarArchivo(nomina);                
+
+                    long tiempoFinal5 = System.currentTimeMillis();                
+                    long tiempoTotal5 = tiempoFinal5 - tiempoInicial5;
+                    vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal5 / 1000 + " segundos");
+
                 break;
                 
-            case "Mezcla directa":
-                MezclaDirecta mezclaDirecta = new MezclaDirecta();
-                System.out.println("Mezcla directa");
-                long tiempoInicial6 = System.currentTimeMillis();                
-                ExportarArchivoCSV exportar6 = new ExportarArchivoCSV();
-             
-            {
-                try {
-                    nomina = mezclaDirecta.ordenarEmpleados(nomina);
-                    exportar6.generarArchivo(nomina);
-                } catch (IOException ex) {
-                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }             
-                
-                long tiempoFinal6 = System.currentTimeMillis();                
-                long tiempoTotal6 = tiempoFinal6 - tiempoInicial6;
-                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal6 / 1000 + " segundos");                
-                               
+                //Ordena por mezcla directa
+                case "Mezcla directa":
+
+                    long tiempoInicial6 = System.currentTimeMillis();
+                    System.out.println("Mezcla directa");
+                    MezclaDirecta mezclaDirecta = new MezclaDirecta();                
+
+                    ExportarArchivoCSV exportar6 = new ExportarArchivoCSV();
+
+                    {
+                        try {
+                            nomina = mezclaDirecta.ordenarEmpleados(nomina);
+                            exportar6.generarArchivo(nomina);
+                        } catch (IOException e1) {
+                            e1.getMessage();
+                        }
+                    }             
+
+                    long tiempoFinal6 = System.currentTimeMillis();                
+                    long tiempoTotal6 = tiempoFinal6 - tiempoInicial6;
+                    vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal6 / 1000 + " segundos");                
+
                 break;
                 
-                
-            case "Mezcla equilibrada multiple":
-                MezclaEquilibradaMultiple mezclaEquilibradaMultiple = new MezclaEquilibradaMultiple();
-                System.out.println("Mezcla equilibrada multiple");
-                long tiempoInicial7 = System.currentTimeMillis();                
-                ExportarArchivoCSV exportar7 = new ExportarArchivoCSV();
-                            
-            
-             {
-                 try {
-                     nomina = mezclaEquilibradaMultiple.ordenarEmpleados(nomina);
-                                     exportar7.generarArchivo(nomina);
-                 } catch (IOException ex) {
-                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-                 }
-             }
-            
-                
-                long tiempoFinal7 = System.currentTimeMillis();                
-                long tiempoTotal7 = tiempoFinal7 - tiempoInicial7;
-                vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal7 / 1000 + " segundos");
-                                
+                //Ordena por mezcla equilibrada multiple
+                case "Mezcla equilibrada multiple":
+
+                    long tiempoInicial7 = System.currentTimeMillis();
+                    System.out.println("Mezcla equilibrada multiple");
+                    MezclaEquilibradaMultiple mezclaEquilibradaMultiple = new MezclaEquilibradaMultiple();             
+
+                    ExportarArchivoCSV exportar7 = new ExportarArchivoCSV();                            
+
+                    {
+                        try {
+                            nomina = mezclaEquilibradaMultiple.ordenarEmpleados(nomina);
+                                            exportar7.generarArchivo(nomina);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }            
+
+                    long tiempoFinal7 = System.currentTimeMillis();                
+                    long tiempoTotal7 = tiempoFinal7 - tiempoInicial7;
+                    vMain.JTFResultados.setText("Tiempo total de generación: " + tiempoTotal7 / 1000 + " segundos");
+
                 break;                                                                                                                                
             
-        }
+            }   
             
         }
         
@@ -325,30 +257,28 @@ public final class Controlador implements ActionListener{
             try{
             
             String nombre = vRegistro.JTFNombre.getText();            
-            if(nombre.isEmpty() || nombre.length() > 50){
-                throw new EmptyException("");
-            }
+                if(nombre.isEmpty() || nombre.length() > 50){
+                    throw new EmptyException("");
+                }
             
             int monto = Integer.parseInt(vRegistro.JTFMonto.getText());
-            if(monto < 10){
-                throw new LessThanTenException("");
-            }
+                if(monto < 10){
+                    throw new LessThanTenException("");
+                }
             
             String cuentaD = vRegistro.JTFCuentaD.getText();            
-            if(cuentaD.length() != 10){
-                throw new AccountSizeException("");
-            }            
+                if(cuentaD.length() != 10){
+                    throw new AccountSizeException("");
+                }            
             
             long fechaTrans = System.currentTimeMillis();
             
             String cuentaOrigen = "1200108200";
-            if(cuentaOrigen.length() != 10){
-                throw new AccountSizeException("");
-            }
+                if(cuentaOrigen.length() != 10){
+                    throw new AccountSizeException("");
+                }
             
-//            BigDecimal impuesto = new BigDecimal(monto * .16);
-//            impuesto.setScale(2, RoundingMode.UP);
-              Double impuesto = monto * .16;
+            Double impuesto = monto * .16;
             
             
             RegistroEmpleados reg = new RegistroEmpleados(nombre, monto, cuentaD, fechaTrans, cuentaOrigen, impuesto);

@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Clase que implementa metodos para el ordenamiendo por "Burbuja"
 package Modelo.Ordenamiento.Interno;
 
 import Modelo.RegistroEmpleados;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- *
- * @author ivana
+ * @author Ivan Aguilar
  */
 public class Burbuja {
     

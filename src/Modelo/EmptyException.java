@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Excepcion que ayuda a que el usuario no deje campos vacíos
 package Modelo;
-
+/**
+ * @author Edwin Fajardo
+ */
 public class EmptyException extends Exception {
     public EmptyException(String message) {
         super(message);

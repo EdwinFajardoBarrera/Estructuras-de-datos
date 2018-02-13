@@ -1,3 +1,4 @@
+//Clase que implementa metodos para el ordenamiendo por "Mezcla equilibrada multiple"
 package Modelo.Ordenamiento.Externo;
 
 import Modelo.ArchivoTxt;
@@ -10,16 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author ivana
+ * @author Ivan Aguilar
  */
 public class MezclaEquilibradaMultiple {
 

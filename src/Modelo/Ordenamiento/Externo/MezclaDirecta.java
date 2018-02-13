@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Clase que implementa metodos para el ordenamiendo por "Mezcla directa"
 package Modelo.Ordenamiento.Externo;
 
 import Modelo.ArchivoTxt;
@@ -19,8 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
- * @author ivana
+ * @author Ivan Aguilar
  */
 public class MezclaDirecta {
 

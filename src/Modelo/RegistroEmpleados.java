@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Clase que contiene todos los atributos de los empleados, así como sus metodos get y set
 package Modelo;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
- *
  * @author erofa
  */
 public class RegistroEmpleados {
@@ -19,7 +13,6 @@ public class RegistroEmpleados {
     private String cuentaDestino;
     private long fechaTransferencia;
     private String cuentaOrigen;
-    //private BigDecimal impuesto = new BigDecimal(0);
     private double impuesto;
     public ArrayList<RegistroEmpleados> listaEmpleados = new ArrayList<RegistroEmpleados>();
 

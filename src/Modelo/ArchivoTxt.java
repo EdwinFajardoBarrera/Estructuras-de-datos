@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Esta clase implementa métodos para el manejo de archivos TXT
 package Modelo;
 
 import java.io.BufferedReader;
@@ -14,8 +10,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 /**
- *
- * @author ivana
+ * @author Ivan Aguilar
  */
 public class ArchivoTxt {
     

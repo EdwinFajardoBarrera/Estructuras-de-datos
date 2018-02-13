@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Excepcion que evita que el usuario ingrese motontos de transferencia menores a 10
 package Modelo;
-
 /**
- *
  * @author Edwin Fajardo
  */
 public class LessThanTenException extends Exception {

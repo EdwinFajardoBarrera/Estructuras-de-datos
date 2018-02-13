@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Esta clase implementa metodos para exportar un ArrayList a un archivo csv
 package Modelo;
 
 import com.csvreader.CsvWriter;
@@ -10,10 +6,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-
 /**
- *
- * @author ivana
+ * @author Ivan Aguilar
  */
 public class ExportarArchivoCSV {
     
