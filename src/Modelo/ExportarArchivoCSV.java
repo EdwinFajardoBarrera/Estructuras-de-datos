@@ -42,7 +42,7 @@ public class ExportarArchivoCSV {
                 csvSalida.write(nom.getCuentaDestino());
                 csvSalida.write(Long.toString(nom.getFechaTransferencia()));
                 csvSalida.write(nom.getCuentaOrigen());
-                csvSalida.write(nom.getImpuesto().toString());
+                csvSalida.write(Double.toString(nom.getImpuesto()));
                 csvSalida.endRecord();
                 
             }

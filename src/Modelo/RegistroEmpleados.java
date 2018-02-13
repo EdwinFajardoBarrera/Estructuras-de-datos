@@ -19,10 +19,11 @@ public class RegistroEmpleados {
     private String cuentaDestino;
     private long fechaTransferencia;
     private String cuentaOrigen;
-    private BigDecimal impuesto = new BigDecimal(0);
+    //private BigDecimal impuesto = new BigDecimal(0);
+    private double impuesto;
     public ArrayList<RegistroEmpleados> listaEmpleados = new ArrayList<RegistroEmpleados>();
 
-    public RegistroEmpleados(String nombre, int monto, String cuentaDestino, long fechaTransferencia, String cuentaOrigen, BigDecimal impuesto) {
+    public RegistroEmpleados(String nombre, int monto, String cuentaDestino, long fechaTransferencia, String cuentaOrigen, double impuesto) {
         this.nombre = nombre;
         this.monto = monto;
         this.cuentaDestino = cuentaDestino;
@@ -72,11 +73,11 @@ public class RegistroEmpleados {
         this.cuentaOrigen = cuentaOrigen;
     }
 
-    public BigDecimal getImpuesto() {
+    public double getImpuesto() {
         return impuesto;
     }
 
-    public void setImpuesto(BigDecimal impuesto) {
+    public void setImpuesto(double impuesto) {
         this.impuesto = impuesto;
     }
 

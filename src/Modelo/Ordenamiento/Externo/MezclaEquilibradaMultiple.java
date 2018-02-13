@@ -264,10 +264,10 @@ public class MezclaEquilibradaMultiple {
 
     }
 
-    public ArrayList<RegistroEmpleados> ordenarEmpleados(ArrayList<RegistroEmpleados> nomina) throws IOException{
+    public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina) throws IOException{
         ArchivoTxt archivo = new ArchivoTxt();
         
-        ArrayList<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
+        List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         
         Double[] arreglo = new Double[nomina.size()];
         int i = 0;
@@ -295,7 +295,7 @@ public class MezclaEquilibradaMultiple {
         
             for(RegistroEmpleados nom : nomina){ 
 
-                if(arreglo[i] == nom.getImpuesto().doubleValue()){
+                if(arreglo[i] == nom.getImpuesto()){
                     nominaArreglada.add(nom);
                 }
                 

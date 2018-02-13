@@ -10,7 +10,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -31,7 +30,7 @@ public class ArchivoTxt {
             fichero1 = new FileWriter(archivo); 
             pw = new PrintWriter(fichero1);
             for(RegistroEmpleados nom : nomina){
-                String Temp2 = nom.getImpuesto().toString();
+                String Temp2 = Double.toString(nom.getImpuesto());
                 pw.println(Temp2);
             }
             fichero1.close();
@@ -65,7 +64,7 @@ public class ArchivoTxt {
 
     }
     
-    public Double[] guardarTxtEnArreglo(String datosTxt, ArrayList<RegistroEmpleados> nomina){
+    public Double[] guardarTxtEnArreglo(String datosTxt, List<RegistroEmpleados> nomina){
         
         Double[] arreglo = new Double[nomina.size()];
         
@@ -81,7 +80,7 @@ public class ArchivoTxt {
         return arreglo;
     }
     
-    public Double[] guardarTxtEnArregloEM(String datosTxt, ArrayList<RegistroEmpleados> nomina){
+    public Double[] guardarTxtEnArregloEM(String datosTxt, List<RegistroEmpleados> nomina){
         
         Double[] arreglo = new Double[nomina.size()];
         
@@ -89,9 +88,10 @@ public class ArchivoTxt {
         
         for(int i = nomina.size() - 1; i >= 0; i--){
             
-            String str = tokens.nextToken(); 
-            arreglo[i] = Double.valueOf(str);
-
+            if(tokens.hasMoreTokens()){
+                String str = tokens.nextToken(); 
+                arreglo[i] = Double.valueOf(str);
+            }
         }
         
         return arreglo;

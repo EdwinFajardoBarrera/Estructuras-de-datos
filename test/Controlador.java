@@ -1,5 +1,3 @@
-package Controlador;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,6 +5,7 @@ package Controlador;
  */
 
 
+import Controlador.*;
 import Modelo.Ordenamiento.Externo.MezclaEquilibradaMultiple;
 import Modelo.*;
 import Modelo.Ordenamiento.Interno.*;
@@ -31,56 +30,34 @@ import javax.swing.table.DefaultTableModel;
  */
 public final class Controlador implements ActionListener{
     
-    private MainView vMain;
-    private VRegistroEmpleados vRegistro;
-    private RegistroEmpleados regEmpleados;
-//    private Burbuja burbuja;
-//    private Insercion insercion;
-//    private Mergesort mergesort;
-//    private Quicksort quicksort;
-//    private Shellsort shellsort;
-//    private MezclaDirecta mezclaDirecta;
-//    private MezclaEquilibradaMultiple mezclaEquilibradaMultiple;
+    private final MainView vMain;
+    private final VRegistroEmpleados vRegistro;
+    private final RegistroEmpleados regEmpleados;
+    private Burbuja burbuja;
+    private Insercion insercion;
+    private Mergesort mergesort;
+    private Quicksort quicksort;
+    private Shellsort shellsort;
+    private MezclaDirecta mezclaDirecta;
+    private MezclaEquilibradaMultiple mezclaEquilibradaMultiple;
     private List<RegistroEmpleados> nomina; 
     
     
-//    public Controlador (MainView vMain, VRegistroEmpleados vRegistro, RegistroEmpleados regEmpleados, Burbuja burbuja, Insercion insercion, Mergesort mergesort, Quicksort quicksort, Shellsort shellsort, MezclaDirecta mezclaDirecta, MezclaEquilibradaMultiple mezclaEquilibradaMultiple, List<RegistroEmpleados> nomina){
-//        ItemListener s = null;
-//        
-//        this.vMain = vMain;
-//        this.vRegistro = vRegistro;
-//        this.regEmpleados = regEmpleados;
-//        this.burbuja = burbuja;
-//        this.insercion = insercion;
-//        this.mergesort = mergesort;
-//        this.quicksort = quicksort;
-//        this.shellsort = shellsort;
-//        this.mezclaDirecta = mezclaDirecta;
-//        this.mezclaEquilibradaMultiple = mezclaEquilibradaMultiple;
-//        this.nomina = nomina;
-//        
-//        
-//        //Botones, solo se agrega el listener para saber si se presiona  o no
-//        this.vMain.JBSalir.addActionListener(this);
-//        this.vMain.JBGenerarRep.addActionListener(this);
-//        this.vMain.JBEmpleadoNuevo.addActionListener(this);
-//        
-//        this.vRegistro.JBSalir.addActionListener(this);
-//        this.vRegistro.JBGuardar.addActionListener(this);
-//        
-//        //Combo box, se necesita validar cual tipo de ordenamiento esta está seleccionado
-//        this.vMain.JCBMOrdenamiento.addItemListener(s);
-//        
-//        configuraTabla(vMain.JTEmpleados);
-//        
-//    }
-    
-        public Controlador(MainView vMain, List<RegistroEmpleados> nomina, VRegistroEmpleados vRegistro){
-        this.vMain = vMain;
-        this.nomina = nomina;
-        this.vRegistro = vRegistro;
-        //this.regEmpleados = regEmpleados;
+    public Controlador (MainView vMain, VRegistroEmpleados vRegistro, RegistroEmpleados regEmpleados, Burbuja burbuja, Insercion insercion, Mergesort mergesort, Quicksort quicksort, Shellsort shellsort, MezclaDirecta mezclaDirecta, MezclaEquilibradaMultiple mezclaEquilibradaMultiple, List<RegistroEmpleados> nomina){
         ItemListener s = null;
+        
+        this.vMain = vMain;
+        this.vRegistro = vRegistro;
+        this.regEmpleados = regEmpleados;
+        this.burbuja = burbuja;
+        this.insercion = insercion;
+        this.mergesort = mergesort;
+        this.quicksort = quicksort;
+        this.shellsort = shellsort;
+        this.mezclaDirecta = mezclaDirecta;
+        this.mezclaEquilibradaMultiple = mezclaEquilibradaMultiple;
+        this.nomina = nomina;
+        
         
         //Botones, solo se agrega el listener para saber si se presiona  o no
         this.vMain.JBSalir.addActionListener(this);
@@ -94,6 +71,7 @@ public final class Controlador implements ActionListener{
         this.vMain.JCBMOrdenamiento.addItemListener(s);
         
         configuraTabla(vMain.JTEmpleados);
+        
     }
     
     public void iniciar(){
@@ -184,7 +162,6 @@ public final class Controlador implements ActionListener{
              switch(s){
             
             case "Insercion":
-                Insercion insercion = new Insercion();
                 System.out.println("Insercion");
                 long tiempoInicial = System.currentTimeMillis();
 
@@ -202,7 +179,6 @@ public final class Controlador implements ActionListener{
                 break;
                 
             case "Burbuja":
-                Burbuja burbuja = new Burbuja();
                 System.out.println("Burbuja");
                 long tiempoInicial2 = System.currentTimeMillis();
                 
@@ -219,7 +195,6 @@ public final class Controlador implements ActionListener{
                 break;
                 
             case "Mergesort":
-                Mergesort mergesort = new Mergesort();
                 System.out.println("Mergesort");
                 long tiempoInicial3 = System.currentTimeMillis();
                 
@@ -235,8 +210,7 @@ public final class Controlador implements ActionListener{
                 
                 break;
                 
-            case "Quicksort":
-                Quicksort quicksort = new Quicksort();
+            case "Quicksort":                
                 System.out.println("Quicksort");
                 long tiempoInicial4 = System.currentTimeMillis();
                 
@@ -253,8 +227,7 @@ public final class Controlador implements ActionListener{
                 
                 break;
                 
-            case "Shellsort":
-                Shellsort shellsort = new Shellsort();
+            case "Shellsort":                
                 System.out.println("Shellsort");
                 long tiempoInicial5 = System.currentTimeMillis();
                 
@@ -271,7 +244,6 @@ public final class Controlador implements ActionListener{
                 break;
                 
             case "Mezcla directa":
-                MezclaDirecta mezclaDirecta = new MezclaDirecta();
                 System.out.println("Mezcla directa");
                 long tiempoInicial6 = System.currentTimeMillis();                
                 ExportarArchivoCSV exportar6 = new ExportarArchivoCSV();
@@ -293,7 +265,6 @@ public final class Controlador implements ActionListener{
                 
                 
             case "Mezcla equilibrada multiple":
-                MezclaEquilibradaMultiple mezclaEquilibradaMultiple = new MezclaEquilibradaMultiple();
                 System.out.println("Mezcla equilibrada multiple");
                 long tiempoInicial7 = System.currentTimeMillis();                
                 ExportarArchivoCSV exportar7 = new ExportarArchivoCSV();

@@ -12,6 +12,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -82,8 +84,10 @@ public class MezclaDirecta {
 
     public void fusionar(String F, String F1, String F2, int part) throws FileNotFoundException, IOException {
 
-        double r1 = 0, r2 = 0;
+        BigDecimal r1 = new BigDecimal(0);
+        BigDecimal r2 = new BigDecimal(0);
         int k = 0, l = 0;
+        
         boolean b1 = false, b2 = false;
 
         File original = new File(F);
@@ -98,36 +102,38 @@ public class MezclaDirecta {
 
         FileWriter writer = new FileWriter(original);
 
-        if (scanner1.hasNextDouble()) {
-            r1 = scanner1.nextDouble();
+        if (scanner1.hasNextBigDecimal()) {
+            r1 = scanner1.nextBigDecimal();
             b1 = true;
         }
 
-        if (scanner2.hasNextDouble()) {
-            r2 = scanner2.nextDouble();
+        if (scanner2.hasNextBigDecimal()) {
+            r2 = scanner2.nextBigDecimal();
             b2 = true;
         }
-
-        while ((scanner1.hasNextDouble() || b1) && (scanner2.hasNextDouble() || b2)) {
+        
+        while ((scanner1.hasNextBigDecimal() || b1) && (scanner2.hasNextBigDecimal() || b2)) {
 
             k = 0;
             l = 0;
 
             while (k < part && b1 && l < part && b2) {
-                if (r1 >= r2) {
+                if ((r1.compareTo(r2)) > 0) {
+                    r1 = r1.setScale(2, RoundingMode.DOWN);
                     writer.write(r1 + SALTO);
                     k++;
                     b1 = false;
-                    if (scanner1.hasNextDouble()) {
-                        r1 = scanner1.nextDouble();
+                    if (scanner1.hasNextBigDecimal()) {
+                        r1 = scanner1.nextBigDecimal();
                         b1 = true;
                     }
                 } else {
+                    r2 = r2.setScale(2, RoundingMode.DOWN);
                     writer.write(r2 + SALTO);
                     l++;
                     b2 = false;
-                    if (scanner2.hasNextDouble()) {
-                        r2 = scanner2.nextDouble();
+                    if (scanner2.hasNextBigDecimal()) {
+                        r2 = scanner2.nextBigDecimal();
                         b2 = true;
                     }
                 }
@@ -137,8 +143,8 @@ public class MezclaDirecta {
                 writer.write(r1 + SALTO);
                 b1 = false;
                 k++;
-                if (scanner1.hasNextDouble()) {
-                    r1 = scanner1.nextDouble();
+                if (scanner1.hasNextBigDecimal()) {
+                    r1 = scanner1.nextBigDecimal();
                     b1 = true;
                 }
             }
@@ -147,8 +153,8 @@ public class MezclaDirecta {
                 writer.write(r2 + SALTO);
                 b2 = false;
                 l++;
-                if (scanner2.hasNextDouble()) {
-                    r2 = scanner2.nextDouble();
+                if (scanner2.hasNextBigDecimal()) {
+                    r2 = scanner2.nextBigDecimal();
                     b2 = true;
                 }
             }
@@ -163,12 +169,12 @@ public class MezclaDirecta {
             writer.write(r2 + SALTO);
         }
 
-        while (scanner1.hasNextDouble()) {
-            writer.write(scanner1.nextDouble() + SALTO);
+        while (scanner1.hasNextBigDecimal()) {
+            writer.write(scanner1.nextBigDecimal() + SALTO);
         }
 
-        while (scanner2.hasNextDouble()) {
-            writer.write(scanner2.nextDouble() + SALTO);
+        while (scanner2.hasNextBigDecimal()) {
+            writer.write(scanner2.nextBigDecimal() + SALTO);
         }
 
         scanner1.close();
@@ -195,7 +201,7 @@ public class MezclaDirecta {
 
     }
     
-    public ArrayList<RegistroEmpleados> ordenarEmpleados(ArrayList<RegistroEmpleados> nomina) throws IOException{        
+    public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina) throws IOException{        
         ArchivoTxt archivo = new ArchivoTxt();
         
         List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
@@ -220,7 +226,7 @@ public class MezclaDirecta {
         
             for(RegistroEmpleados nom : nomina){ 
 
-                if(arreglo[i] == nom.getImpuesto().doubleValue()){
+                if(arreglo[i] == nom.getImpuesto()){
                     nominaArreglada.add(nom);
                 }
                 
@@ -230,7 +236,7 @@ public class MezclaDirecta {
         
    
         
-        return (ArrayList<RegistroEmpleados>) nominaArreglada;
+        return nominaArreglada;
         
     }
 

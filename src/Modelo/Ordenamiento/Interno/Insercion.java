@@ -38,8 +38,8 @@ public class Insercion {
         return valor1 <= valor2;
     }
     
-    public ArrayList<RegistroEmpleados> ordenarEmpleados(ArrayList<RegistroEmpleados> nomina){
-        ArrayList<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
+    public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina){
+        List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         
         int[] arreglo = new int[nomina.size()];
         int i = 0;
