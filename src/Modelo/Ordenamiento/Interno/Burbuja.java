@@ -9,6 +9,10 @@ import java.util.List;
  */
 public class Burbuja {
     
+    /**
+     * @param entrada
+     * @return int[]
+     */
     public int[] realizarBurbuja(int[] entrada){
 
         int temp;
@@ -28,6 +32,10 @@ public class Burbuja {
         return entrada;
     }
     
+    /**
+     * @param nomina
+     * @return List<RegistroEmpleados>
+     */
     public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina){
         List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         

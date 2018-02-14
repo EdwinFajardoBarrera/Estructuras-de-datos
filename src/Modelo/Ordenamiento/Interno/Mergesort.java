@@ -9,6 +9,12 @@ import java.util.List;
  */
 public class Mergesort {
     
+    /**
+     * @param arreglo
+     * @param izq
+     * @param media
+     * @param der 
+     */
     public void merge(int[] arreglo, int izq, int media, int der){
         
         int n1 = media - izq + 1;
@@ -55,6 +61,11 @@ public class Mergesort {
         
     }
     
+    /**
+     * @param arreglo
+     * @param izq
+     * @param der 
+     */
     public void realizarMergesort(int[] arreglo, int izq, int der){
         
         if(izq < der){
@@ -68,6 +79,10 @@ public class Mergesort {
         
     }
     
+    /**
+     * @param nomina
+     * @return List<RegistroEmpleados>
+     */
     public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina){
         List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         

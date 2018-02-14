@@ -1,11 +1,5 @@
+//Controlador de todo el programa
 package Controlador;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 import Modelo.Ordenamiento.Externo.MezclaEquilibradaMultiple;
 import Modelo.*;
@@ -26,16 +20,21 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Edwin Roman Fajardo Barrera
+ * @author Edwin Fajardo
  */
 public final class Controlador implements ActionListener{
     
     private final MainView vMain;
     private final VRegistroEmpleados vRegistro;
     private RegistroEmpleados regEmpleados;
-    private List<RegistroEmpleados> nomina; 
+    private List<RegistroEmpleados> nomina;
     
+        
+        /** 
+         * @param vMain
+         * @param nomina
+         * @param vRegistro 
+         */
         public Controlador(MainView vMain, List<RegistroEmpleados> nomina, VRegistroEmpleados vRegistro){
         this.vMain = vMain;
         this.nomina = nomina;
@@ -56,6 +55,9 @@ public final class Controlador implements ActionListener{
         configuraTabla(vMain.JTEmpleados);
     }
     
+    /**
+     * 
+     */
     public void iniciar(){
         vMain.setTitle("Control de empleados");
         vRegistro.setTitle("Registro empleados");
@@ -63,7 +65,10 @@ public final class Controlador implements ActionListener{
         vRegistro.setLocationRelativeTo(null);
     }
     
-    //Metodo para inicializar y actualizar el contenido de la tabla principal   
+        /**
+         * 
+         * @param tabla 
+         */
         public void configuraTabla(JTable tabla){
         Vector<String> titulos = new Vector<String>();
         Vector<Vector<Object>> datos = new Vector<Vector<Object>>();

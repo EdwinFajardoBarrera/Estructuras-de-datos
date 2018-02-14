@@ -16,6 +16,10 @@ public class ArchivoTxt {
     
     public final String SALTO = System.lineSeparator();
     
+    /**
+     * @param archivo
+     * @param nomina 
+     */
     public void escribirTxt(String archivo, List<RegistroEmpleados> nomina){
         
         FileWriter fichero1 = null;
@@ -34,7 +38,10 @@ public class ArchivoTxt {
         }
         
     }
-    
+    /**
+     * @param direccion
+     * @return String
+     */
     public String leerTxt (String direccion){   
         
         String texto = "";
@@ -59,6 +66,11 @@ public class ArchivoTxt {
 
     }
     
+    /**
+     * @param datosTxt
+     * @param nomina
+     * @return Double[]
+     */
     public Double[] guardarTxtEnArreglo(String datosTxt, List<RegistroEmpleados> nomina){
         
         Double[] arreglo = new Double[nomina.size()];
@@ -73,8 +85,14 @@ public class ArchivoTxt {
         }
         
         return arreglo;
+        
     }
     
+    /**
+     * @param datosTxt
+     * @param nomina
+     * @return Double
+     */
     public Double[] guardarTxtEnArregloEM(String datosTxt, List<RegistroEmpleados> nomina){
         
         Double[] arreglo = new Double[nomina.size()];

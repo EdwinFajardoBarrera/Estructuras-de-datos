@@ -9,6 +9,10 @@ import java.util.List;
  */
 public class Shellsort {
     
+    /**
+     * @param entrada
+     * @return int[]
+     */
     public int[] realizarSherllsort(int[] entrada){
         int n = entrada.length;
         int salto = (int) Math.floor(n/2);
@@ -35,6 +39,11 @@ public class Shellsort {
         return entrada;
     }
     
+    /**
+     * 
+     * @param nomina
+     * @return List<RegistroEmpleados>
+     */
     public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina){
         List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         

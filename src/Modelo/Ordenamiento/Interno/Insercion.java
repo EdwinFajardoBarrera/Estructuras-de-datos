@@ -9,6 +9,10 @@ import java.util.List;
  */
 public class Insercion {
     
+    /**
+     * @param entrada
+     * @return int[]
+     */
     public int[] realizarInsercion(int[] entrada){
         int temporal;
         for (int i = 1; i < entrada.length; i++) { //i = 1 para que pueda realizar la comparacion con el numero anterior
@@ -32,6 +36,10 @@ public class Insercion {
         return valor1 <= valor2;
     }
     
+    /**
+     * @param nomina
+     * @return List<RegistroEmpleados>
+     */
     public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina){
         List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         

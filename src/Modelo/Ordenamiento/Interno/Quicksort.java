@@ -9,6 +9,11 @@ import java.util.List;
  */
 public class Quicksort {
     
+    /**
+     * @param A
+     * @param izq
+     * @param der 
+     */
     public void realizarQuicksort(int[] A, int izq, int der){
         
         int pivote=A[izq]; 
@@ -46,6 +51,10 @@ public class Quicksort {
         
     }    
     
+    /**
+     * @param nomina
+     * @return List<RegistroEmpleados>
+     */
     public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina){
         List<RegistroEmpleados> nominaArreglada = new ArrayList<RegistroEmpleados>();
         

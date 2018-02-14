@@ -3,7 +3,11 @@ package Modelo;
 /**
  * @author Edwin Fajardo
  */
+
 public class EmptyException extends Exception {
+    /**
+     * @param message 
+     */
     public EmptyException(String message) {
         super(message);
     }

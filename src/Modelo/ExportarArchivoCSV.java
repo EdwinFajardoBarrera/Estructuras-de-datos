@@ -10,7 +10,9 @@ import java.util.List;
  * @author Ivan Aguilar
  */
 public class ExportarArchivoCSV {
-    
+    /**
+     * @param nomina 
+     */
     public void generarArchivo(List<RegistroEmpleados> nomina){
         String ruta = "";
         String nombreArchivo = "nomina.csv";
@@ -18,8 +20,9 @@ public class ExportarArchivoCSV {
         
         try {
             
-            FileWriter writer = new FileWriter(archivo, true); 
+            FileWriter writer = new FileWriter(archivo, false); 
             CsvWriter csvSalida = new CsvWriter(writer, ','); 
+            
             
             csvSalida.write("Nombre");
             csvSalida.write("Monto de transferencia");

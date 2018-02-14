@@ -4,7 +4,10 @@ package Modelo;
  * @author Edwin Fajardo
  */
 public class AccountSizeException extends Exception{
-    
+    /**
+     * 
+     * @param message 
+     */
     public AccountSizeException(String message) {
         super(message);
     }

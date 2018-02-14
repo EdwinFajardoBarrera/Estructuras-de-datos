@@ -18,9 +18,14 @@ import java.util.Scanner;
  * @author Ivan Aguilar
  */
 public class MezclaDirecta {
-
+    
     public final String SALTO = System.lineSeparator();
-
+    /**
+     * @param F
+     * @param F1
+     * @param F2
+     * @throws IOException 
+     */
     public void realizarMezclaDirecta(String F, String F1, String F2) throws IOException {
         int n = tamanoArchivo(F);
         int particion = 1;
@@ -32,7 +37,15 @@ public class MezclaDirecta {
         }
 
     }
-
+    
+    /**
+     * @param F
+     * @param F1
+     * @param F2
+     * @param part
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void particionar(String F, String F1, String F2, int part) throws FileNotFoundException, IOException {
 
         int k = 0;
@@ -76,7 +89,15 @@ public class MezclaDirecta {
         writer2.close();
         scanner.close();
     }
-
+    
+    /**
+     * @param F
+     * @param F1
+     * @param F2
+     * @param part
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void fusionar(String F, String F1, String F2, int part) throws FileNotFoundException, IOException {
 
         BigDecimal r1 = new BigDecimal(0);
@@ -177,7 +198,13 @@ public class MezclaDirecta {
         writer.close();
 
     }
-
+    
+    /**
+     * @param ruta
+     * @return int
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public int tamanoArchivo(String ruta) throws FileNotFoundException, IOException {
 
         int tamano = 0;
@@ -196,6 +223,11 @@ public class MezclaDirecta {
 
     }
     
+    /**
+     * @param nomina
+     * @return List<RegistroEmpleados>
+     * @throws IOException 
+     */
     public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina) throws IOException{        
         ArchivoTxt archivo = new ArchivoTxt();
         

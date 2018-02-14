@@ -17,7 +17,13 @@ import java.util.Scanner;
 public class MezclaEquilibradaMultiple {
 
     public final String SALTO = System.lineSeparator();
-
+    /**
+     * @param F1
+     * @param F2
+     * @param F3
+     * @param F4
+     * @throws IOException 
+     */
     public void realizarMezclaEquilibrada(String F1, String F2, String F3, String F4) throws IOException {
 
         boolean band = true;
@@ -50,7 +56,15 @@ public class MezclaEquilibradaMultiple {
 
     }
 
-
+    /**
+     * @param Fs1
+     * @param Fs2
+     * @param Fs3
+     * @param Fs4
+     * @throws FileNotFoundException
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void particionFusion(String Fs1, String Fs2, String Fs3, String Fs4) throws FileNotFoundException, FileNotFoundException, IOException {
 
         double r1 = 0;
@@ -202,7 +216,14 @@ public class MezclaEquilibradaMultiple {
         F2.close();
 
     }
-
+    
+    /**
+     * @param F1
+     * @param F3
+     * @param F4
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void particionInicial(String F1, String F3, String F4) throws FileNotFoundException, IOException {
         double aux = 0;
         double r = 0;
@@ -257,6 +278,11 @@ public class MezclaEquilibradaMultiple {
 
     }
 
+    /**
+     * @param nomina
+     * @return List<RegistroEmpleados>
+     * @throws IOException 
+     */
     public List<RegistroEmpleados> ordenarEmpleados(List<RegistroEmpleados> nomina) throws IOException{
         ArchivoTxt archivo = new ArchivoTxt();
         

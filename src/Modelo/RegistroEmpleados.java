@@ -16,6 +16,14 @@ public class RegistroEmpleados {
     private double impuesto;
     public ArrayList<RegistroEmpleados> listaEmpleados = new ArrayList<RegistroEmpleados>();
 
+    /**
+     * @param nombre
+     * @param monto
+     * @param cuentaDestino
+     * @param fechaTransferencia
+     * @param cuentaOrigen
+     * @param impuesto 
+     */
     public RegistroEmpleados(String nombre, int monto, String cuentaDestino, long fechaTransferencia, String cuentaOrigen, double impuesto) {
         this.nombre = nombre;
         this.monto = monto;
